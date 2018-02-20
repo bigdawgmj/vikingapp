@@ -1,0 +1,56 @@
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="teamMates">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstname}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastname}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <mat-card>
+    <h1>Add Team Member</h1>
+    <form class="add-member-form" (ngSubmit)="addMember()" #addMemberForm="ngForm">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ID" name="id" required [(ngModel)]="newMate.id">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" name="firstname"  required [(ngModel)]="newMate.firstname">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Last Name" name="lastname" required [(ngModel)]="newMate.lastname">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" name="email" required [(ngModel)]="newMate.email">
+      </mat-form-field>
+      <button mat-raised-button [disabled]="!addMemberForm.form.valid" type="submit">Add</button>
+    </form>
+  </mat-card>
