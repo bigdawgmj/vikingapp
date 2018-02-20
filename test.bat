@@ -1,1 +1,0 @@
-START cmd /c C:\Users\mjensen\AppData\Local\conda\conda\envs\flaskenv\python.exe server\app.py && START cmd /c "cd /d .\vikings && ng s --port 4242 --proxy-config proxy.config.json -o"

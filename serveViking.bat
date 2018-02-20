@@ -1,1 +1,0 @@
-START cmd /c D:\pythonvenv\flaskenv\Scripts\python.exe server\app.py && START cmd /k "cd /d .\vikings && ng s --port 4242 --proxy-config proxy.config.json -o"
