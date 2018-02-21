@@ -1,5 +1,6 @@
-import urllib2, base64, json, ConfigParser
+import urllib2, base64, json, configparser
 import pandas as pd
+import pdb
 
 class VstsWorker:
     def __init__(self, base_url, username, pat, project):
@@ -22,7 +23,7 @@ class VstsWorker:
     def create_wit(self, project, wit_name):
         wit_url = self.base_url + 'DefaultCollection/' + project + '/_apis/wit/workitems/$' + wit_name + '?api-version=2.0'
         json_obj = json.load(create_request(wit_url))
-        print json_obj['value']        
+        print(json_obj['value'])
 
     def create_training_data(self, sprint, users, weeks):
         tasks = []
@@ -52,7 +53,8 @@ class VstsWorker:
 
         cnt = 1
         for user in users:
-            firstname = user['name'].split(' ')[0]
+            # firstname = user['name'].split(' ')[0]
+            name = user['firstname'] + ' ' + user['lastname']
             for week in weeks:
                 cnt += 1
                 training = {}
@@ -62,7 +64,7 @@ class VstsWorker:
                 training['body'] = [ { 
                     'op' : 'add',  
                     'path' : '/fields/System.Title',  
-                    'value' : firstname + ' ' + week + ' training'  
+                    'value' : user['firstname'] + ' ' + week + ' training'  
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/System.IterationPath',  
@@ -70,7 +72,7 @@ class VstsWorker:
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/System.AssignedTo',  
-                    'value' : user['name'] + ' ' +  user['email']   
+                    'value' : name + ' ' +  user['email']   
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/Microsoft.VSTS.Scheduling.RemainingWork',  
@@ -96,32 +98,32 @@ class VstsWorker:
         url = self.base_url + 'DefaultCollection/' + self.project + '/_apis/wit/classificationNodes/iterations?$depth=2&api-version=2.0'
         result = self.create_request(url) 
         data = json.load(result)
-        print data
+        print(data)
 
-config = ConfigParser.ConfigParser()
-config.read('vsts_config.ini')
+# config = ConfigParser.ConfigParser()
+# config.read('vsts_config.ini')
 
-base_url = config.get('vsts', 'base_url')
-username = config.get('vsts', 'username')
-pat = config.get('vsts', 'pat')
-project = config.get('vsts', 'project')
-vsts = VstsWorker(base_url, username, pat, project)
+# base_url = config.get('vsts', 'base_url')
+# username = config.get('vsts', 'username')
+# pat = config.get('vsts', 'pat')
+# project = config.get('vsts', 'project')
+# vsts = VstsWorker(base_url, username, pat, project)
 
-# Get team members from config file
-team = []
-users = config.options('users')
-for userid in users:
-    this_user = {
-        'name': config.get('users', userid),
-        'email': config.get('emails', userid)
-    }
-    team.append(this_user)
+# # Get team members from config file
+# team = []
+# users = config.options('users')
+# for userid in users:
+#     this_user = {
+#         'name': config.get('users', userid),
+#         'email': config.get('emails', userid)
+#     }
+#     team.append(this_user)
 
-print team
-weeks = ['wk1', 'wk2']
+# print(team)
+# weeks = ['wk1', 'wk2']
 
-# Batch Url > Get Data >  Send Request
-wit_url = vsts.base_url + 'DefaultCollection/_apis/wit/$batch?api-version=2.0'
-data = vsts.create_training_data(6, team, weeks, )
-# result = vsts.create_request(wit_url, data)
-print data
+# # Batch Url > Get Data >  Send Request
+# wit_url = vsts.base_url + 'DefaultCollection/_apis/wit/$batch?api-version=2.0'
+# data = vsts.create_training_data(6, team, weeks, )
+# # result = vsts.create_request(wit_url, data)
+# # print data

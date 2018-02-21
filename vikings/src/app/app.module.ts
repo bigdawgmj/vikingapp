@@ -14,11 +14,13 @@ import { AppComponent } from './app.component';
 import { TeamComponent } from './vsts/components/team/team.component';
 import { TestService } from './vsts/services/test.service';
 import { HttpClientModule } from '@angular/common/http';
+import { WitComponent } from './vsts/components/wit/wit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TeamComponent
+    TeamComponent,
+    WitComponent
   ],
   imports: [
     BrowserModule,

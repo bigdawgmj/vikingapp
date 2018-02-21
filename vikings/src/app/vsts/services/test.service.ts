@@ -19,4 +19,8 @@ export class TestService {
     return this.http.post<any>(this.baseUrl + '/member', mate);
   }
 
+  addTraining(sprint: Object): Observable<any> {
+    return this.http.post<any>('api/wit/training', sprint);
+  }
+
 }

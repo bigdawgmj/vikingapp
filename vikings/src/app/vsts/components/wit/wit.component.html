@@ -1,0 +1,13 @@
+<mat-card>
+  <h1 class="gloria">Add Team Training</h1>
+  <form>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Sprint" name="sprint" [(ngModel)]="sprint">
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" (click)="addTraining()">
+      Add Training
+    </button>
+  </form>
+  <p style="color:orangered">{{added}}</p>
+</mat-card>
