@@ -41,6 +41,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-*.ini
 
+# Project specific exclusions
 serveViking.bat
+*.pyc
+*.ini
+__pycache__/
