@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { TeamComponent } from './vsts/components/team/team.component';
@@ -32,6 +33,7 @@ import { WitComponent } from './vsts/components/wit/wit.component';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatSelectModule,
     TableModule
   ],
   providers: [TestService],

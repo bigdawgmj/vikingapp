@@ -5,9 +5,19 @@
       <input matInput placeholder="Sprint" name="sprint" [(ngModel)]="sprint">
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Projects" [(ngModel)]="selectedProject" name="project">
+        <mat-option *ngFor="let project of projects" [value]="project.name">
+          {{project.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <button mat-raised-button type="submit" (click)="addTraining()">
       Add Training
     </button>
   </form>
   <p style="color:orangered">{{added}}</p>
 </mat-card>
+
+{{selectedProject}}

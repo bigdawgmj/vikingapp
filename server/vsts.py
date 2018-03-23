@@ -3,13 +3,14 @@ import pandas as pd
 import pdb
 
 class VstsWorker:
-    def __init__(self, base_url, username, pat, project):
-        self.base_url = base_url 
-        self.username = username
-        self.pat = pat
-        self.project = project
+    def __init__(self, base_url, username, pat, project=None):
+        self.base_url = str(base_url) 
+        self.username = str(username)
+        self.pat = str(pat)
+        self.project = str(project)
 
     def create_request(self, url, data=None):
+        # pdb.set_trace()
         if data is None:
             self.request = urllib2.Request(url)
         else:
@@ -28,6 +29,7 @@ class VstsWorker:
     def create_training_data(self, sprint, users, weeks):
         tasks = []
 
+        pdb.set_trace()
         pbi = {}
         pbi['method'] = 'PATCH'
         pbi['uri'] = '/' + self.project + '/_apis/wit/workItems/$Product Backlog Item?api-version=2.0'
@@ -39,7 +41,7 @@ class VstsWorker:
         }, {
             'op' : 'add',  
             'path' : '/fields/System.IterationPath',  
-            'value' : 'REDIWeb\\Sprint ' + str(sprint)  
+            'value' : self.project + '\\Sprint ' + str(sprint)  
         }, {
             'op' : 'add',  
             'path' : '/fields/Microsoft.VSTS.Scheduling.Effort',  
@@ -68,11 +70,11 @@ class VstsWorker:
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/System.IterationPath',  
-                    'value' : 'REDIWeb\\Sprint ' + str(sprint)  
+                    'value' : self.project + '\\Sprint ' + str(sprint)  
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/System.AssignedTo',  
-                    'value' : name + ' ' +  user['email']   
+                    'value' : name # + ' ' +  user['email']   
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/Microsoft.VSTS.Scheduling.RemainingWork',  

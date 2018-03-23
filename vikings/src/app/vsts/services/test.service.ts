@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { Teammate } from '../model/teammate';
+import { Project } from '../model/project';
 
 @Injectable()
 export class TestService {
@@ -21,6 +22,10 @@ export class TestService {
 
   addTraining(sprint: Object): Observable<any> {
     return this.http.post<any>('api/wit/training', sprint);
+  }
+
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>('api/projects');
   }
 
 }

@@ -4,6 +4,7 @@ import os
 import pdb
 from vsts import VstsWorker
 from configparser import ConfigParser
+import json
 
 app = Flask(__name__)
 
@@ -29,21 +30,42 @@ def post_team_member():
 
     return jsonify({"status": "SUCCESS"})
 
+@app.route('/api/projects', methods=['GET'])
+def get_projects():
+    config = ConfigParser() 
+    ini_path = os.path.join(os.getcwd(), 'server\\vsts_config.ini')
+    config.read(ini_path)
+    vsts = VstsWorker(
+        config.get('vsts', 'base_url'),
+        config.get('vsts', 'username'),
+        config.get('vsts', 'pat')
+    )
+
+    result = vsts.create_request(vsts.base_url + '/DefaultCollection/_apis/projects?api-version=2.0')
+    data = json.load(result)
+    values = data['value']
+    out_array = []
+    for val in values:
+        output = {'id':val['id'],'name':val['name']}
+        out_array.append(output)
+    # return jsonify(result) 
+    return jsonify(out_array)
+
 @app.route('/api/wit/training', methods=['POST'])
 def add_training():
     content = request.get_json()
     sprint = content['sprint']
+    project = content['project']
     weeks = ['wk1', 'wk2']
     config = ConfigParser() 
     ini_path = os.path.join(os.getcwd(), 'server\\vsts_config.ini')
     config.read(ini_path)
-    # pdb.set_trace()
 
     vsts = VstsWorker(
         config.get('vsts', 'base_url'),
         config.get('vsts', 'username'),
         config.get('vsts', 'pat'),
-        config.get('vsts', 'project')
+        project
     )
 
     csv_path = os.path.join(os.getcwd(), 'server\\data\\team.csv')
