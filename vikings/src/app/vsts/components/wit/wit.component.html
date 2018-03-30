@@ -20,4 +20,19 @@
   <p style="color:orangered">{{added}}</p>
 </mat-card>
 
-{{selectedProject}}
+<mat-card style="margin-top: 20px;">
+  <h1 class="gloria">Current Weather</h1>
+  <h2 style="margin: 3px 0;">
+    {{weather.current_observation.temp_f}} &#8457; {{weather.current_observation.weather}}
+  </h2>
+  <h4 style="margin: 3px 0;">
+    {{weather.current_observation.temp_c}} &#8451;
+  </h4>
+  <p>
+    Feels Like: {{weather.current_observation.feelslike_f}} &#8457; -- 
+    {{weather.current_observation.feelslike_c}} &#8451;
+  </p>
+  <p style="color:peru">
+    <em>Source: Weather Underground</em>
+  </p>
+</mat-card>

@@ -47,3 +47,4 @@ serveViking.bat
 *.pyc
 *.ini
 __pycache__/
+.vscode

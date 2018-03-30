@@ -5,6 +5,7 @@ import pdb
 from vsts import VstsWorker
 from configparser import ConfigParser
 import json
+from WeatherUndergroundAccess import WeatherUndergroundAccess as WU
 
 app = Flask(__name__)
 
@@ -16,6 +17,10 @@ def get_team_members():
     df = pd.read_csv(csv_path, header=0)
     return df.to_json(orient='records')
     # return csv_path 
+
+@app.route("/api/weather/<city>")
+def get_weather(city):
+    return WU().get_weather(city)
 
 @app.route('/api/team/member', methods=['POST'])
 def post_team_member():

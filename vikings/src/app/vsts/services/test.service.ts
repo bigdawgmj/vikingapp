@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { Teammate } from '../model/teammate';
+import { Weather } from '../model/weather';
 import { Project } from '../model/project';
 
 @Injectable()
@@ -26,6 +27,10 @@ export class TestService {
 
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>('api/projects');
+  }
+
+  getWeather(city: string): Observable<Weather> {
+    return this.http.get<Weather>('api/weather/' + city)
   }
 
 }
