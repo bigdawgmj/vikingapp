@@ -44,6 +44,12 @@ export class WitComponent implements OnInit {
     );
   }
 
+  updateWeather() {
+    this.testService.getWeather('Kaysville').subscribe(
+      res => this.weather = res
+    );
+  }
+
   test(res: Project[]) {
     this.projects = res;
   }

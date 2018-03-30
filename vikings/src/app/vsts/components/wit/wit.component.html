@@ -32,7 +32,7 @@
     Feels Like: {{weather.current_observation.feelslike_f}} &#8457; -- 
     {{weather.current_observation.feelslike_c}} &#8451;
   </p>
-  <p style="color:peru">
+  <p style="color:peru; cursor: pointer;" (click)="updateWeather()">
     <em>Source: Weather Underground</em>
   </p>
 </mat-card>
