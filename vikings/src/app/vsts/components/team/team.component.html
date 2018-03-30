@@ -4,6 +4,8 @@
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
   
+      <!-- TODO: Need to update with VSTS Name -->
+
       <!-- Position Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
@@ -36,6 +38,8 @@
   <mat-card>
     <h1 class="gloria">Add Team Member</h1>
     <form class="add-member-form" (ngSubmit)="addMember()" #addMemberForm="ngForm">
+      <!-- TODO: Need to update with VSTS Name -->
+
       <mat-form-field class="example-full-width">
         <input matInput placeholder="ID" name="id" required [(ngModel)]="newMate.id">
       </mat-form-field>

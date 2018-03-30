@@ -48,3 +48,5 @@ serveViking.bat
 *.ini
 __pycache__/
 .vscode
+*.csv
+*.swp

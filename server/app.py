@@ -73,8 +73,10 @@ def add_training():
         project
     )
 
+    # TODO: Need to update team to have vsts name
     csv_path = os.path.join(os.getcwd(), 'server\\data\\team.csv')
-    df = pd.read_csv(csv_path, header=0)
+    df = pd.read_csv(csv_path)
+    df = df.fillna('')
     team = df.to_dict(orient='records')
 
     wit_url = vsts.base_url + 'DefaultCollection/_apis/wit/$batch?api-version=2.0'

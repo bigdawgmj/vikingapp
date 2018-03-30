@@ -1,6 +1,7 @@
 import urllib2, base64, json, configparser
 import pandas as pd
 import pdb
+import math
 
 class VstsWorker:
     def __init__(self, base_url, username, pat, project=None):
@@ -29,7 +30,7 @@ class VstsWorker:
     def create_training_data(self, sprint, users, weeks):
         tasks = []
 
-        pdb.set_trace()
+        # pdb.set_trace()
         pbi = {}
         pbi['method'] = 'PATCH'
         pbi['uri'] = '/' + self.project + '/_apis/wit/workItems/$Product Backlog Item?api-version=2.0'
@@ -56,6 +57,7 @@ class VstsWorker:
         cnt = 1
         for user in users:
             # firstname = user['name'].split(' ')[0]
+            pdb.set_trace()
             name = user['firstname'] + ' ' + user['lastname']
             for week in weeks:
                 cnt += 1

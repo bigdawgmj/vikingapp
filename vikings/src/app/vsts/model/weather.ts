@@ -1,6 +1,6 @@
 export class Weather {
     response: Object
-    current_observation: CurrentObs
+    current_observation: any
 }
 
 export class CurrentObs {
