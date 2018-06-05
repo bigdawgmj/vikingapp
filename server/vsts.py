@@ -46,7 +46,7 @@ class VstsWorker:
         }, {
             'op' : 'add',  
             'path' : '/fields/Microsoft.VSTS.Scheduling.Effort',  
-            'value' : len(users)  
+            'value' : len(users) * 2
         }, {
             'op': 'add',
             'path' : '/id',
@@ -57,7 +57,7 @@ class VstsWorker:
         cnt = 1
         for user in users:
             # firstname = user['name'].split(' ')[0]
-            pdb.set_trace()
+            # pdb.set_trace()
             name = user['firstname'] + ' ' + user['lastname']
             for week in weeks:
                 cnt += 1
@@ -80,7 +80,7 @@ class VstsWorker:
                 }, {
                     'op' : 'add',  
                     'path' : '/fields/Microsoft.VSTS.Scheduling.RemainingWork',  
-                    'value' : 0.5  
+                    'value' : 1.0  
                 }, {
                     'op': 'add',
                     'path' : '/id',

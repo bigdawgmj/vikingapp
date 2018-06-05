@@ -1,0 +1,5 @@
+[
+  "vsts_test.py::test_init", 
+  "vsts_test.py::test_create_request_no_data", 
+  "vsts_test.py::test_create_request_data"
+]

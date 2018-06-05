@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+/* @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah'); */
+@import url('https://fonts.googleapis.com/css?family=Kelly+Slab');
 
 body {
     background-color: lightgrey; 
-    font-family: 'Gloria Hallelujah', cursive;
+    /* font-family: 'Gloria Hallelujah', cursive; */
+    font-family: 'Kelly Slab', cursive;
 }
 
 .gloria {
-    font-family: 'Gloria Hallelujah', cursive;
+    /* font-family: 'Gloria Hallelujah', cursive; */
+    font-family: 'Kelly Slab', cursive;
 }
