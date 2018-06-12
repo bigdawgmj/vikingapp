@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs';
+
 
 import { Teammate } from '../model/teammate';
 import { Weather } from '../model/weather';
