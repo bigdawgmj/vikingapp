@@ -1,5 +1,8 @@
 [
   "vsts_test.py::test_init", 
   "vsts_test.py::test_create_request_no_data", 
-  "vsts_test.py::test_create_request_data"
+  "vsts_test.py::test_create_request_data", 
+  "vsts_test.py::test_create_wit_calls_create_request", 
+  "vsts_test.py::test_create_training_data_returns_json_object", 
+  "vsts_test.py::test_get_iterations_returns_json_object"
 ]

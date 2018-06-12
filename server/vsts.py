@@ -24,8 +24,7 @@ class VstsWorker:
 
     def create_wit(self, project, wit_name):
         wit_url = self.base_url + 'DefaultCollection/' + project + '/_apis/wit/workitems/$' + wit_name + '?api-version=2.0'
-        json_obj = json.load(create_request(wit_url))
-        print(json_obj['value'])
+        json_obj = json.load(self.create_request(wit_url))
 
     def create_training_data(self, sprint, users, weeks):
         tasks = []
@@ -102,32 +101,3 @@ class VstsWorker:
         url = self.base_url + 'DefaultCollection/' + self.project + '/_apis/wit/classificationNodes/iterations?$depth=2&api-version=2.0'
         result = self.create_request(url) 
         data = json.load(result)
-        print(data)
-
-# config = ConfigParser.ConfigParser()
-# config.read('vsts_config.ini')
-
-# base_url = config.get('vsts', 'base_url')
-# username = config.get('vsts', 'username')
-# pat = config.get('vsts', 'pat')
-# project = config.get('vsts', 'project')
-# vsts = VstsWorker(base_url, username, pat, project)
-
-# # Get team members from config file
-# team = []
-# users = config.options('users')
-# for userid in users:
-#     this_user = {
-#         'name': config.get('users', userid),
-#         'email': config.get('emails', userid)
-#     }
-#     team.append(this_user)
-
-# print(team)
-# weeks = ['wk1', 'wk2']
-
-# # Batch Url > Get Data >  Send Request
-# wit_url = vsts.base_url + 'DefaultCollection/_apis/wit/$batch?api-version=2.0'
-# data = vsts.create_training_data(6, team, weeks, )
-# # result = vsts.create_request(wit_url, data)
-# # print data
