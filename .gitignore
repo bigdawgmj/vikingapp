@@ -55,3 +55,4 @@ venv/
 .cache/
 .pytest_cache/
 htmlcov/
+.coverage
